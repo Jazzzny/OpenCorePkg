@@ -815,6 +815,17 @@ OcLoadBooterUefiSupport (
         Patch->Skip  = UserPatch->Skip;
         Patch->Limit = UserPatch->Limit;
 
+        DEBUG ((
+          DEBUG_INFO,
+          "OC: Booter patch %u: %a - %u bytes, count %u, skip %u, limit %u\n",
+          Index,
+          Patch->Identifier,
+          Patch->Size,
+          Patch->Count,
+          Patch->Skip,
+          Patch->Limit
+          ));
+
         ++NextIndex;
       }
 
