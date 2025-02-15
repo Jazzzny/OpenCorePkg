@@ -66,7 +66,7 @@ OcKernelConfigureCapabilities (
   // Reset to the default value.
   // Capabilities will always have K64 stripped when compiled for IA32.
   //
-  mUse32BitKernel = (Capabilities & OC_KERN_CAPABILITY_K64_U64) == 0;
+  mUse32BitKernel = 0;
 
   //
   // Skip if not Apple image.
@@ -89,7 +89,7 @@ OcKernelConfigureCapabilities (
                    );
 
   if (HasAppleArch) {
-    mUse32BitKernel = AsciiStrCmp (AppleArchValue, "i386") == 0;
+    mUse32BitKernel = 0;
     DEBUG ((DEBUG_INFO, "OC: Arch %a overrides capabilities %u\n", AppleArchValue, Capabilities));
     FreePool (AppleArchValue);
     return;
@@ -226,7 +226,7 @@ OcKernelConfigureCapabilities (
   // If we do not support K64 for this target, force 32.
   //
   if ((Capabilities & OC_KERN_CAPABILITY_K64_U64) == 0) {
-    mUse32BitKernel = TRUE;
+    mUse32BitKernel = 0;
   }
 }
 
